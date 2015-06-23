@@ -15,7 +15,7 @@ module ActionController
 
     def serialization_scope
       send(_serialization_scope) if _serialization_scope &&
-        respond_to?(_serialization_scope, true)
+          respond_to?(_serialization_scope, true)
     end
 
     def get_serializer(resource)
@@ -36,12 +36,16 @@ module ActionController
     [:_render_option_json, :_render_with_renderer_json].each do |renderer_method|
       define_method renderer_method do |resource, options|
         @_adapter_opts, @_serializer_opts =
-          options.partition { |k, _| ADAPTER_OPTION_KEYS.include? k }.map { |h| Hash[h] }
+            options.partition { |k, _| ADAPTER_OPTION_KEYS.include? k }.map { |h| Hash[h] }
 
         if use_adapter? && (serializer = get_serializer(resource))
 
           @_serializer_opts[:scope] ||= serialization_scope
           @_serializer_opts[:scope_name] = _serialization_scope
+
+          if self.params.has_key?('group')
+            @_serializer_opts[:count] = self.params['group']
+          end
 
           # omg hax
           object = serializer.new(resource, @_serializer_opts)
