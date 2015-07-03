@@ -23,7 +23,7 @@ module ActiveModel
     end
 
     def self.inherited(base)
-      base._attributes = self._attributes.try(:dup)  || []
+      base._attributes = self._attributes.try(:dup) || []
       base._attributes_keys = self._attributes_keys.try(:dup) || {}
       base._associations = self._associations.try(:dup) || {}
       base._urls = []
@@ -45,7 +45,7 @@ module ActiveModel
 
     def self.attribute(attr, options = {})
       key = options.fetch(:key, attr)
-      @_attributes_keys[attr] = {key: key} if key != attr
+      @_attributes_keys[attr] = { key: key } if key != attr
       @_attributes << key unless @_attributes.include?(key)
       define_method key do
         object.read_attribute_for_serialization(attr)
@@ -58,10 +58,10 @@ module ActiveModel
 
     # Enables a serializer to be automatically cached
     def self.cache(options = {})
-      @_cache         = ActionController::Base.cache_store if Rails.configuration.action_controller.perform_caching
-      @_cache_key     = options.delete(:key)
-      @_cache_only    = options.delete(:only)
-      @_cache_except  = options.delete(:except)
+      @_cache = ActionController::Base.cache_store if Rails.configuration.action_controller.perform_caching
+      @_cache_key = options.delete(:key)
+      @_cache_only = options.delete(:only)
+      @_cache_except = options.delete(:except)
       @_cache_options = (options.empty?) ? nil : options
     end
 
@@ -106,7 +106,7 @@ module ActiveModel
           end
         end
 
-        self._associations[attr] = {type: type, association_options: options}
+        self._associations[attr] = { type: type, association_options: options }
       end
     end
 
@@ -125,18 +125,18 @@ module ActiveModel
         config.array_serializer
       else
         options
-          .fetch(:association_options, {})
-          .fetch(:serializer, get_serializer_for(resource.class))
+            .fetch(:association_options, {})
+            .fetch(:serializer, get_serializer_for(resource.class))
       end
     end
 
     def self.adapter
       adapter_class = case config.adapter
-      when Symbol
-        ActiveModel::Serializer::Adapter.adapter_class(config.adapter)
-      when Class
-        config.adapter
-      end
+                        when Symbol
+                          ActiveModel::Serializer::Adapter.adapter_class(config.adapter)
+                        when Class
+                          config.adapter
+                      end
       unless adapter_class
         valid_adapters = Adapter.constants.map { |klass| ":#{klass.to_s.downcase}" }
         raise ArgumentError, "Unknown adapter: #{config.adapter}. Valid adapters are: #{valid_adapters}"
@@ -152,12 +152,12 @@ module ActiveModel
     attr_accessor :object, :root, :meta, :meta_key, :scope
 
     def initialize(object, options = {})
-      @object     = object
-      @options    = options
-      @root       = options[:root]
-      @meta       = options[:meta]
-      @meta_key   = options[:meta_key]
-      @scope      = options[:scope]
+      @object = object
+      @options = options
+      @root = options[:root]
+      @meta = options[:meta]
+      @meta_key = options[:meta_key]
+      @scope = options[:scope]
 
       scope_name = options[:scope_name]
       if scope_name && !respond_to?(scope_name)
@@ -181,11 +181,11 @@ module ActiveModel
 
     def attributes(options = {})
       attributes =
-        if options[:fields]
-          self.class._attributes & options[:fields]
-        else
-          self.class._attributes.dup
-        end
+          if options[:fields]
+            self.class._attributes & options[:fields]
+          else
+            self.class._attributes.dup
+          end
 
       attributes += options[:required_fields] if options[:required_fields]
 
@@ -207,8 +207,8 @@ module ActiveModel
 
         if serializer_class
           serializer = serializer_class.new(
-            association_value,
-            options.except(:serializer).merge(serializer_from_options(association_options))
+              association_value,
+              options.except(:serializer).merge(serializer_from_options(association_options))
           )
         elsif !association_value.nil? && !association_value.instance_of?(Object)
           association_options[:association_options][:virtual_value] = association_value

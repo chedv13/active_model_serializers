@@ -22,6 +22,10 @@ module ActionController
       @_serializer ||= @_serializer_opts.delete(:serializer)
       @_serializer ||= ActiveModel::Serializer.serializer_for(resource)
 
+      if self.params.has_key?('group')
+        @_serializer_opts[:count] = self.params['group']
+      end
+
       if @_serializer_opts.key?(:each_serializer)
         @_serializer_opts[:serializer] = @_serializer_opts.delete(:each_serializer)
       end
@@ -42,10 +46,6 @@ module ActionController
 
           @_serializer_opts[:scope] ||= serialization_scope
           @_serializer_opts[:scope_name] = _serialization_scope
-
-          if self.params.has_key?('group')
-            @_serializer_opts[:count] = self.params['group']
-          end
 
           # omg hax
           object = serializer.new(resource, @_serializer_opts)

@@ -6,9 +6,11 @@ module ActiveModel
       class Json < Adapter
         def serializable_hash(options = {})
           if serializer.respond_to?(:each)
-            @result = serializer.map{|s| FlattenJson.new(s).serializable_hash }
+            @result = serializer.map { |s| FlattenJson.new(s).serializable_hash }
           else
             @hash = {}
+
+            puts options
 
             @core = cache_check(serializer) do
               serializer.attributes(options)

@@ -17,12 +17,20 @@ module ActiveModel
       end
 
       def serializable_hash(options = {})
-        raise NotImplementedError, 'This is an abstract method. Should be implemented at the concrete adapter.'
+        raise NotImplementedError, ' This is an abstract method.Should be implemented at the concrete adapter.'
       end
 
       def as_json(options = {})
         hash = serializable_hash(options)
         include_meta(hash) unless self.class == FlattenJson
+
+        puts options
+        if options.has_key?(:count)
+          puts 'test'
+
+          hash['count'] = options[:count]
+        end
+
         hash
       end
 
@@ -37,14 +45,14 @@ module ActiveModel
       end
 
       def fragment_cache(*args)
-        raise NotImplementedError, 'This is an abstract method. Should be implemented at the concrete adapter.'
+        raise NotImplementedError, ' This is an abstract method.Should be implemented at the concrete adapter.'
       end
 
       private
 
-     def cache_check(serializer)
+      def cache_check(serializer)
         @cached_serializer = serializer
-        @klass             = @cached_serializer.class
+        @klass = @cached_serializer.class
         if is_cached?
           @klass._cache.fetch(cache_key, @klass._cache_options) do
             yield
@@ -75,6 +83,10 @@ module ActiveModel
         (@klass._cache_key) ? "#{@klass._cache_key}/#{@cached_serializer.object.id}-#{@cached_serializer.object.updated_at}" : @cached_serializer.object.cache_key
       end
 
+      # def count
+      #   serializer.count if serializer.respond_to?(:count)
+      # end
+
       def meta
         serializer.meta if serializer.respond_to?(:meta)
       end
@@ -86,6 +98,11 @@ module ActiveModel
       def root
         serializer.json_key.to_sym if serializer.json_key
       end
+
+      # def include_count(json)
+      #   json[' count '] = count if count
+      #   json
+      # end
 
       def include_meta(json)
         json[meta_key] = meta if meta
