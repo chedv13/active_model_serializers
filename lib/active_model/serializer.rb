@@ -57,13 +57,13 @@ module ActiveModel
     end
 
     # Enables a serializer to be automatically cached
-    def self.cache(options = {})
-      @_cache = ActionController::Base.cache_store if Rails.configuration.action_controller.perform_caching
-      @_cache_key = options.delete(:key)
-      @_cache_only = options.delete(:only)
-      @_cache_except = options.delete(:except)
-      @_cache_options = (options.empty?) ? nil : options
-    end
+    # def self.cache(options = {})
+    #   @_cache = ActionController::Base.cache_store if Rails.configuration.action_controller.perform_caching
+    #   @_cache_key = options.delete(:key)
+    #   @_cache_only = options.delete(:only)
+    #   @_cache_except = options.delete(:except)
+    #   @_cache_options = (options.empty?) ? nil : options
+    # end
 
     # Defines an association in the object should be rendered.
     #
@@ -227,16 +227,16 @@ module ActiveModel
       opts
     end
 
-    def self.serializers_cache
-      @serializers_cache ||= ThreadSafe::Cache.new
-    end
+    # def self.serializers_cache
+    #   @serializers_cache ||= ThreadSafe::Cache.new
+    # end
 
     private
 
     attr_reader :options
 
     def self.get_serializer_for(klass)
-      serializers_cache.fetch_or_store(klass) do
+      # serializers_cache.fetch_or_store(klass) do
         serializer_class_name = "#{klass.name}Serializer"
         serializer_class = serializer_class_name.safe_constantize
 
@@ -245,7 +245,7 @@ module ActiveModel
         elsif klass.superclass
           get_serializer_for(klass.superclass)
         end
-      end
+      # end
     end
 
   end

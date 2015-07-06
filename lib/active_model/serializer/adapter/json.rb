@@ -1,4 +1,4 @@
-require 'active_model/serializer/adapter/json/fragment_cache'
+# require 'active_model/serializer/adapter/json/fragment_cache'
 
 module ActiveModel
   class Serializer
@@ -10,25 +10,39 @@ module ActiveModel
           else
             @hash = {}
 
-            puts options
-
-            @core = cache_check(serializer) do
-              serializer.attributes(options)
-            end
+            @core = serializer.attributes(options)
+            # cache_check(serializer) do
+            # end
 
             serializer.each_association do |name, association, opts|
               if association.respond_to?(:each)
                 array_serializer = association
                 @hash[name] = array_serializer.map do |item|
-                  cache_check(item) do
-                    item.attributes(opts)
+                  # cache_check(item) do
+                  res = {}
+
+                  res.merge!(item.attributes(opts))
+
+                  item.each_association do |inner_name, inner_assoc, inner_opts|
+                    res.merge!({ inner_name => inner_assoc.attributes(inner_opts) })
                   end
+
+                  res
+                  # end
                 end
               else
                 if association && association.object
-                  @hash[name] = cache_check(association) do
-                    association.attributes(options)
+                  # cache_check(association) do
+                  res = {}
+
+                  res.merge!(association.attributes(options))
+
+                  association.each_association do |inner_name, inner_assoc, inner_opts|
+                    res.merge!({ inner_name => inner_assoc.attributes(inner_opts) })
                   end
+
+                  @hash[name] = res
+                  # end
                 elsif opts[:virtual_value]
                   @hash[name] = opts[:virtual_value]
                 else
