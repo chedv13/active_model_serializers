@@ -22,10 +22,6 @@ module ActionController
       @_serializer ||= @_serializer_opts.delete(:serializer)
       @_serializer ||= ActiveModel::Serializer.serializer_for(resource)
 
-      if self.params.has_key?('group')
-        @_serializer_opts[:count] = self.params['group']
-      end
-
       if @_serializer_opts.key?(:each_serializer)
         @_serializer_opts[:serializer] = @_serializer_opts.delete(:each_serializer)
       end
@@ -43,17 +39,18 @@ module ActionController
             options.partition { |k, _| ADAPTER_OPTION_KEYS.include? k }.map { |h| Hash[h] }
 
         if use_adapter? && (serializer = get_serializer(resource))
-
           @_serializer_opts[:scope] ||= serialization_scope
           @_serializer_opts[:scope_name] = _serialization_scope
 
-          # omg hax
-          object = serializer.new(resource, @_serializer_opts)
-          adapter = ActiveModel::Serializer::Adapter.create(object, @_adapter_opts)
-          super(adapter, options)
-        else
-          super(resource, options)
+          begin
+            serialized = serializer.new(resource, @_serializer_opts)
+          rescue ActiveModel::Serializer::ArraySerializer::NoSerializerError
+          else
+            resource = ActiveModel::Serializer::Adapter.create(serialized, @_adapter_opts)
+          end
         end
+
+        super(resource, options)
       end
     end
 

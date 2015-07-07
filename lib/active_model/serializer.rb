@@ -23,7 +23,7 @@ module ActiveModel
     end
 
     def self.inherited(base)
-      base._attributes = self._attributes.try(:dup) || []
+      base._attributes = self._attributes.try(:dup)  || []
       base._attributes_keys = self._attributes_keys.try(:dup) || {}
       base._associations = self._associations.try(:dup) || {}
       base._urls = []
@@ -45,7 +45,7 @@ module ActiveModel
 
     def self.attribute(attr, options = {})
       key = options.fetch(:key, attr)
-      @_attributes_keys[attr] = { key: key } if key != attr
+      @_attributes_keys[attr] = {key: key} if key != attr
       @_attributes << key unless @_attributes.include?(key)
       define_method key do
         object.read_attribute_for_serialization(attr)
@@ -57,13 +57,13 @@ module ActiveModel
     end
 
     # Enables a serializer to be automatically cached
-    # def self.cache(options = {})
-    #   @_cache = ActionController::Base.cache_store if Rails.configuration.action_controller.perform_caching
-    #   @_cache_key = options.delete(:key)
-    #   @_cache_only = options.delete(:only)
-    #   @_cache_except = options.delete(:except)
-    #   @_cache_options = (options.empty?) ? nil : options
-    # end
+    def self.cache(options = {})
+      @_cache         = ActionController::Base.cache_store if Rails.configuration.action_controller.perform_caching
+      @_cache_key     = options.delete(:key)
+      @_cache_only    = options.delete(:only)
+      @_cache_except  = options.delete(:except)
+      @_cache_options = (options.empty?) ? nil : options
+    end
 
     # Defines an association in the object should be rendered.
     #
@@ -106,7 +106,7 @@ module ActiveModel
           end
         end
 
-        self._associations[attr] = { type: type, association_options: options }
+        self._associations[attr] = {type: type, association_options: options}
       end
     end
 
@@ -152,12 +152,12 @@ module ActiveModel
     attr_accessor :object, :root, :meta, :meta_key, :scope
 
     def initialize(object, options = {})
-      @object = object
-      @options = options
-      @root = options[:root]
-      @meta = options[:meta]
-      @meta_key = options[:meta_key]
-      @scope = options[:scope]
+      @object     = object
+      @options    = options
+      @root       = options[:root]
+      @meta       = options[:meta]
+      @meta_key   = options[:meta_key]
+      @scope      = options[:scope]
 
       scope_name = options[:scope_name]
       if scope_name && !respond_to?(scope_name)
@@ -206,16 +206,23 @@ module ActiveModel
         serializer_class = ActiveModel::Serializer.serializer_for(association_value, association_options)
 
         if serializer_class
-          serializer = serializer_class.new(
-              association_value,
-              options.except(:serializer).merge(serializer_from_options(association_options))
-          )
+          begin
+            serializer = serializer_class.new(
+                association_value,
+                options.except(:serializer).merge(serializer_from_options(association_options))
+            )
+          rescue ActiveModel::Serializer::ArraySerializer::NoSerializerError
+            virtual_value = association_value
+            virtual_value = virtual_value.as_json if virtual_value.respond_to?(:as_json)
+            association_options[:association_options][:virtual_value] = virtual_value
+          end
         elsif !association_value.nil? && !association_value.instance_of?(Object)
           association_options[:association_options][:virtual_value] = association_value
         end
 
+        association_key = association_options[:association_options][:key] || name
         if block_given?
-          block.call(name, serializer, association_options[:association_options])
+          block.call(association_key, serializer, association_options[:association_options])
         end
       end
     end
@@ -227,16 +234,16 @@ module ActiveModel
       opts
     end
 
-    # def self.serializers_cache
-    #   @serializers_cache ||= ThreadSafe::Cache.new
-    # end
+    def self.serializers_cache
+      @serializers_cache ||= ThreadSafe::Cache.new
+    end
 
     private
 
     attr_reader :options
 
     def self.get_serializer_for(klass)
-      # serializers_cache.fetch_or_store(klass) do
+      serializers_cache.fetch_or_store(klass) do
         serializer_class_name = "#{klass.name}Serializer"
         serializer_class = serializer_class_name.safe_constantize
 
@@ -245,7 +252,7 @@ module ActiveModel
         elsif klass.superclass
           get_serializer_for(klass.superclass)
         end
-      # end
+      end
     end
 
   end

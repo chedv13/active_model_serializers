@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd8d7fd8-8448-4848-a907-ccdce597bca4" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/fragment_cache.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json/fragment_cache.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json_api/fragment_cache.rb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/active_model_serializers.iml" afterPath="$PROJECT_DIR$/.idea/active_model_serializers.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model_serializers.rb" afterPath="$PROJECT_DIR$/lib/active_model_serializers.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer/adapter.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/fragment_cache.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer/adapter/fragment_cache.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/flatten_json.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer/adapter/flatten_json.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json_api.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json_api.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/action_controller/serialization.rb" afterPath="$PROJECT_DIR$/lib/action_controller/serialization.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="active_model_serializers.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,12 +39,8 @@
         <entry file="file://$PROJECT_DIR$/lib/active_model/serializer.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-              <folding>
-                <marker date="1436190995000" expanded="true" signature="1861:2177" placeholder=" ... end" />
-                <marker date="1436190995000" expanded="true" signature="7091:7154" placeholder=" ... end" />
-                <marker date="1436190995000" expanded="true" signature="7282:7566" placeholder="do ... end" />
-              </folding>
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,17 +59,8 @@
         <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
-              <folding>
-                <marker date="1436190946000" expanded="true" signature="1203:1329" placeholder=" ... end" />
-                <marker date="1436190946000" expanded="true" signature="1381:1763" placeholder=" ... end" />
-                <marker date="1436190946000" expanded="true" signature="1478:1751" placeholder="if ... end" />
-                <marker date="1436190946000" expanded="true" signature="1558:1596" placeholder="do ... end" />
-                <marker date="1436190946000" expanded="true" signature="1794:1878" placeholder=" ... end" />
-                <marker date="1436190946000" expanded="true" signature="1918:2031" placeholder=" ... end" />
-                <marker date="1436190946000" expanded="true" signature="2061:2264" placeholder=" ... end" />
-                <marker date="1436190946000" expanded="true" signature="2301:2478" placeholder=" ... end" />
-              </folding>
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/json.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.8769231">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,16 +77,6 @@
       </file>
       <file leaf-file-name="json_api.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/json_api.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_cache.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/fragment_cache.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -111,21 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_cache.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/json/fragment_cache.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="serialization.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/action_controller/serialization.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -288,66 +262,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="adapter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="active_model_serializers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="active_model_serializers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="active_model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="serializer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="json_api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="active_model_serializers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="active_model_serializers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="active_model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="serializer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="json" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -589,11 +503,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-          <folding>
-            <marker date="1436190995000" expanded="true" signature="1861:2177" placeholder=" ... end" />
-            <marker date="1436190995000" expanded="true" signature="7091:7154" placeholder=" ... end" />
-            <marker date="1436190995000" expanded="true" signature="7282:7566" placeholder="do ... end" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -609,16 +519,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1436190946000" expanded="true" signature="1203:1329" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="1381:1763" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="1478:1751" placeholder="if ... end" />
-            <marker date="1436190946000" expanded="true" signature="1558:1596" placeholder="do ... end" />
-            <marker date="1436190946000" expanded="true" signature="1794:1878" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="1918:2031" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="2061:2264" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="2301:2478" placeholder=" ... end" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -638,23 +539,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/fragment_cache.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/null.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/json/fragment_cache.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -689,12 +574,8 @@
     <entry file="file://$PROJECT_DIR$/lib/active_model/serializer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-          <folding>
-            <marker date="1436190995000" expanded="true" signature="1861:2177" placeholder=" ... end" />
-            <marker date="1436190995000" expanded="true" signature="7091:7154" placeholder=" ... end" />
-            <marker date="1436190995000" expanded="true" signature="7282:7566" placeholder="do ... end" />
-          </folding>
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -709,37 +590,20 @@
     <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
-          <folding>
-            <marker date="1436190946000" expanded="true" signature="1203:1329" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="1381:1763" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="1478:1751" placeholder="if ... end" />
-            <marker date="1436190946000" expanded="true" signature="1558:1596" placeholder="do ... end" />
-            <marker date="1436190946000" expanded="true" signature="1794:1878" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="1918:2031" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="2061:2264" placeholder=" ... end" />
-            <marker date="1436190946000" expanded="true" signature="2301:2478" placeholder=" ... end" />
-          </folding>
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/json.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8769231">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/json_api.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/fragment_cache.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -755,18 +619,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/active_model/serializer/adapter/json/fragment_cache.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/action_controller/serialization.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

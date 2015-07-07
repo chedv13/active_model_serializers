@@ -15,10 +15,11 @@ module ActiveModel
           end
         end
 
-        def serializable_hash(options = {})
+        def serializable_hash(options = nil)
+          options = {}
           if serializer.respond_to?(:each)
             serializer.each do |s|
-              result = self.class.new(s, @options.merge(fieldset: @fieldset)).serializable_hash
+              result = self.class.new(s, @options.merge(fieldset: @fieldset)).serializable_hash(options)
               @hash[:data] << result[:data]
 
               if result[:included]
@@ -27,7 +28,7 @@ module ActiveModel
               end
             end
           else
-            @hash[:data] = attributes_for_serializer(serializer, @options)
+            @hash[:data] = attributes_for_serializer(serializer, options)
             add_resource_relationships(@hash[:data], serializer)
           end
           @hash
@@ -48,7 +49,7 @@ module ActiveModel
 
         def add_relationship(resource, name, serializer, val=nil)
           resource[:relationships] ||= {}
-          resource[:relationships][name] = { data: nil }
+          resource[:relationships][name] = { data: val }
 
           if serializer && serializer.object
             resource[:relationships][name][:data] = { type: serializer.type, id: serializer.id.to_s }
@@ -74,8 +75,8 @@ module ActiveModel
           end
 
           serializers.each do |serializer|
-            serializer.each_association do |name, association, opts|
-              add_included(name, association, resource_path) if association
+            serializer.each_association do |key, association, opts|
+              add_included(key, association, resource_path) if association
             end if include_nested_assoc? resource_path
           end
         end
@@ -100,8 +101,8 @@ module ActiveModel
             attributes = serializer.attributes(options)
 
             result = {
-              id: attributes.delete(:id).to_s,
-              type: attributes.delete(:type)
+                id: attributes.delete(:id).to_s,
+                type: attributes.delete(:type)
             }
 
             result[:attributes] = attributes if attributes.any?
@@ -130,22 +131,22 @@ module ActiveModel
         def add_resource_relationships(attrs, serializer, options = {})
           options[:add_included] = options.fetch(:add_included, true)
 
-          serializer.each_association do |name, association, opts|
+          serializer.each_association do |key, association, opts|
             attrs[:relationships] ||= {}
 
             if association.respond_to?(:each)
-              add_relationships(attrs, name, association)
+              add_relationships(attrs, key, association)
             else
               if opts[:virtual_value]
-                add_relationship(attrs, name, nil, opts[:virtual_value])
+                add_relationship(attrs, key, nil, opts[:virtual_value])
               else
-                add_relationship(attrs, name, association)
+                add_relationship(attrs, key, association)
               end
             end
 
             if options[:add_included]
               Array(association).each do |association|
-                add_included(name, association)
+                add_included(key, association)
               end
             end
           end
