@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd8d7fd8-8448-4848-a907-ccdce597bca4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/fragment_cache.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json/fragment_cache.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json_api/fragment_cache.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/active_model_serializers.iml" afterPath="$PROJECT_DIR$/.idea/active_model_serializers.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model_serializers.rb" afterPath="$PROJECT_DIR$/lib/active_model_serializers.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer/adapter.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/flatten_json.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer/adapter/flatten_json.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json_api.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer/adapter/json_api.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/action_controller/serialization.rb" afterPath="$PROJECT_DIR$/lib/action_controller/serialization.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/active_model/serializer.rb" afterPath="$PROJECT_DIR$/lib/active_model/serializer.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>

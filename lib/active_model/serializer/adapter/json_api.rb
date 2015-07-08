@@ -44,7 +44,7 @@ module ActiveModel
         def add_relationships(resource, name, serializers)
           resource[:relationships] ||= {}
           resource[:relationships][name] ||= { data: [] }
-          resource[:relationships][name][:data] += serializers.map { |serializer| { type: serializer.type, id: serializer.id.to_s } }
+          resource[:relationships][name][:data] += serializers.map { |serializer| { type: serializer.get_type, id: serializer.id.to_s } }
         end
 
         def add_relationship(resource, name, serializer, val=nil)
@@ -52,7 +52,7 @@ module ActiveModel
           resource[:relationships][name] = { data: val }
 
           if serializer && serializer.object
-            resource[:relationships][name][:data] = { type: serializer.type, id: serializer.id.to_s }
+            resource[:relationships][name][:data] = { type: serializer.get_type, id: serializer.id.to_s }
           end
         end
 

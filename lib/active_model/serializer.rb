@@ -23,7 +23,7 @@ module ActiveModel
     end
 
     def self.inherited(base)
-      base._attributes = self._attributes.try(:dup)  || []
+      base._attributes = self._attributes.try(:dup) || []
       base._attributes_keys = self._attributes_keys.try(:dup) || {}
       base._associations = self._associations.try(:dup) || {}
       base._urls = []
@@ -45,7 +45,7 @@ module ActiveModel
 
     def self.attribute(attr, options = {})
       key = options.fetch(:key, attr)
-      @_attributes_keys[attr] = {key: key} if key != attr
+      @_attributes_keys[attr] = { key: key } if key != attr
       @_attributes << key unless @_attributes.include?(key)
       define_method key do
         object.read_attribute_for_serialization(attr)
@@ -58,10 +58,10 @@ module ActiveModel
 
     # Enables a serializer to be automatically cached
     def self.cache(options = {})
-      @_cache         = ActionController::Base.cache_store if Rails.configuration.action_controller.perform_caching
-      @_cache_key     = options.delete(:key)
-      @_cache_only    = options.delete(:only)
-      @_cache_except  = options.delete(:except)
+      @_cache = ActionController::Base.cache_store if Rails.configuration.action_controller.perform_caching
+      @_cache_key = options.delete(:key)
+      @_cache_only = options.delete(:only)
+      @_cache_except = options.delete(:except)
       @_cache_options = (options.empty?) ? nil : options
     end
 
@@ -106,7 +106,7 @@ module ActiveModel
           end
         end
 
-        self._associations[attr] = {type: type, association_options: options}
+        self._associations[attr] = { type: type, association_options: options }
       end
     end
 
@@ -152,12 +152,12 @@ module ActiveModel
     attr_accessor :object, :root, :meta, :meta_key, :scope
 
     def initialize(object, options = {})
-      @object     = object
-      @options    = options
-      @root       = options[:root]
-      @meta       = options[:meta]
-      @meta_key   = options[:meta_key]
-      @scope      = options[:scope]
+      @object = object
+      @options = options
+      @root = options[:root]
+      @meta = options[:meta]
+      @meta_key = options[:meta_key]
+      @scope = options[:scope]
 
       scope_name = options[:scope_name]
       if scope_name && !respond_to?(scope_name)
@@ -175,7 +175,7 @@ module ActiveModel
       object.id if object
     end
 
-    def type
+    def get_type
       object.class.model_name.plural
     end
 
